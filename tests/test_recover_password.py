@@ -14,7 +14,6 @@ from urls import Urls
 class TestRecoverPassword:
 
     @allure.title('Проверка восстановления пароля')
-    #@pytest.mark.parametrize('num', [0, 1])
     def test_click_recover_password(self, driver):
         # создай объект класса логина страницы приложения
         login_page = LoginPage(driver)
@@ -29,7 +28,6 @@ class TestRecoverPassword:
         assert login_page.get_current_url() == Urls.FORGOT_PASSWORD_URL
 
     @allure.title('Проверка ввода email и восстановления')
-    #@pytest.mark.parametrize('num', [0, 1])
     def test_input_email_and_click_recover(self, driver):
 
         # создай объект класса восстановления пароля страницы приложения
@@ -49,7 +47,6 @@ class TestRecoverPassword:
 
         assert forgot_password_page.get_current_url() == Urls.RESET_PASSWORD_URL
     @allure.title('Проверка смены цвета границы при активации поля')
-    #@pytest.mark.parametrize('num', [0, 1])
     def test_switch_color_of_border_when_active(self, driver):
 
         # создай объект класса сбрасывания пароля страницы приложения

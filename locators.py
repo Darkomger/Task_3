@@ -23,9 +23,9 @@ class LoginPageLocators: # Страница логина
     PASSWORD_FILED = (By.XPATH, ".//input[@type='password']")
 class ListOrdersPageLocators: # Страница логина
     LIST_ORDERS_TEXT = (By.XPATH, ".//h1[text()='Лента заказов']")
-    FIRST_ORDER_ELEMENT = (By.XPATH, ".//h1[text()='Лента заказов']/../div/ul/li/a")
+    FIRST_ORDER_ELEMENT = (By.XPATH, ".//a[contains(@class,'OrderHistory')]")
     DETAILS_ORDER_TEXT = (By.XPATH, ".//p[text()='Cостав']")
-    FIRST_NUMBER_TEXT = (By.XPATH, ".//h1[text()='Лента заказов']/../div/ul/li/a/div/p[contains(@class, 'text_type_digits')]")
+    FIRST_NUMBER_TEXT = (By.XPATH, ".//p[contains(@class, 'text_type_digits') and not(contains(@class, 'm'))]")
     ALL_TIME_ORDERS_COUNTER = (By.XPATH, ".//p[text()='Выполнено за все время:']/../p[contains(@class, 'number')]")
     TODAY_ORDERS_COUNTER = (By.XPATH, ".//p[text()='Выполнено за сегодня:']/../p[contains(@class, 'number')]")
     IN_PROGRESS_ORDERS_COUNTER = (By.XPATH, ".//ul[contains(@class, 'orderListReady')]")

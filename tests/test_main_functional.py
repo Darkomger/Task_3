@@ -2,6 +2,7 @@ import allure
 
 from pages.main_page import MainPage
 from pages.list_orders_page import ListOrdersPage
+from pages.login_page import LoginPage
 
 from helpers import *
 
@@ -14,7 +15,6 @@ from urls import Urls
 class TestMainFunctional:
 
     @allure.title('Проверка перехода в конструктор')
-    #@pytest.mark.parametrize('num', [0, 1])
     def test_click_constructor(self, driver):
         list_orders = ListOrdersPage(driver)
     
@@ -97,8 +97,6 @@ class TestMainFunctional:
 
         main_page.drag_and_drop_ingredient()
 
-        #main_page.wait_for_main_page_element_invisible()
-
         new_counter =  main_page.get_counter_flu_burger_text()
         
         assert current_counter < new_counter
@@ -106,7 +104,7 @@ class TestMainFunctional:
     @allure.title('Проверка создания заказа без авторизации')
     def test_create_order(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
 

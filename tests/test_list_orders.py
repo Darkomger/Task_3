@@ -4,6 +4,7 @@ from pages.main_page import MainPage
 from pages.list_orders_page import ListOrdersPage
 from pages.profile_page import ProfilePage
 from pages.history_orders_page import HistoryOrdersPage
+from pages.login_page import LoginPage
 
 from helpers import *
 from data import Data
@@ -30,7 +31,7 @@ class TestListOrders:
     @allure.title('Проверка создания заказа')
     def test_create_order(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
         
@@ -77,7 +78,7 @@ class TestListOrders:
     @allure.title('Проверка увеличения счетчика заказов за все время')
     def test_increese_all_time_counter(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         
         main_page = MainPage(driver)
         
@@ -120,7 +121,7 @@ class TestListOrders:
     @allure.title('Проверка увеличения счетчика заказов за сегодня')
     def test_increese_today_counter(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         
         main_page = MainPage(driver)
         
@@ -161,7 +162,7 @@ class TestListOrders:
     @allure.title('Проверка заказов в процессе приготовления')
     def test_orders_in_progress(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         
         main_page = MainPage(driver)
         

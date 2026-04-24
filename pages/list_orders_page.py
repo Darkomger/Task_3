@@ -20,11 +20,11 @@ class ListOrdersPage(BasePage):
     def wait_for_list_orders_page_load(self):
         self.wait_for_element_visible(self.list_orders_text)
     
-    @allure.step('Ждем смену аттрибута стутуса готовки заказа')
+    @allure.step('Ждем смену атрибута статуса готовки заказа')
     def wait_for_change_attribute_details_oerder_text(self,attribute,attribute_old):
         self.wait_for_css_property_change(self.details_order_text, attribute, attribute_old)
 
-    @allure.step('Ждем смену закозов в процессе')
+    @allure.step('Ждем смену заказов в процессе')
     def wait_for_change_in_progress_orders(self,text):
         self.wait_for_text_to_change(self.in_progress_orders_counter, text)
 

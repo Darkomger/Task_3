@@ -2,6 +2,7 @@ import allure
 
 from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
+from pages.login_page import LoginPage
 
 from helpers import *
 
@@ -13,10 +14,9 @@ from urls import Urls
 class TestPersonalAccount:
 
     @allure.title('Проверка персонального аккаунта')
-    #@pytest.mark.parametrize('num', [0, 1])
     def test_click_personal_acount(self, driver, create_courier_and_delete):
         
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
 
         main_page = MainPage(driver)
         # нажимаем на кнопку личный кабинет
@@ -29,10 +29,9 @@ class TestPersonalAccount:
         assert main_page.get_current_url() == Urls.PROFILE_URL
 
     @allure.title('Проверка перехода в историю заказов')
-    #@pytest.mark.parametrize('num', [0, 1])
     def test_click_history_orders(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
 
@@ -51,7 +50,7 @@ class TestPersonalAccount:
     @allure.title('Проверка выхода из аккаунта')
     def test_click_exit(self, driver, create_courier_and_delete):
 
-        login_to_account(driver, create_courier_and_delete)
+        LoginPage.login_to_account(driver, create_courier_and_delete)
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
         
