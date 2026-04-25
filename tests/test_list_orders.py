@@ -4,7 +4,6 @@ from pages.main_page import MainPage
 from pages.list_orders_page import ListOrdersPage
 from pages.profile_page import ProfilePage
 from pages.history_orders_page import HistoryOrdersPage
-from pages.login_page import LoginPage
 
 from helpers import *
 from data import Data
@@ -29,9 +28,9 @@ class TestListOrders:
         assert new_visibility == Data.DATA_STATUS_VISIBLE
 
     @allure.title('Проверка создания заказа')
-    def test_create_order(self, driver, create_courier_and_delete):
+    def test_create_order(self, login_to_account):
+        driver = login_to_account
 
-        LoginPage.login_to_account(driver, create_courier_and_delete)
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
         
@@ -76,10 +75,9 @@ class TestListOrders:
         assert history_number == list_number
 
     @allure.title('Проверка увеличения счетчика заказов за все время')
-    def test_increese_all_time_counter(self, driver, create_courier_and_delete):
+    def test_increese_all_time_counter(self, login_to_account):
+        driver = login_to_account
 
-        LoginPage.login_to_account(driver, create_courier_and_delete)
-        
         main_page = MainPage(driver)
         
         main_page.wait_for_main_page_load()
@@ -119,9 +117,8 @@ class TestListOrders:
         assert old_all_time_counter < new_all_time_counter
 
     @allure.title('Проверка увеличения счетчика заказов за сегодня')
-    def test_increese_today_counter(self, driver, create_courier_and_delete):
-
-        LoginPage.login_to_account(driver, create_courier_and_delete)
+    def test_increese_today_counter(self, login_to_account):
+        driver = login_to_account
         
         main_page = MainPage(driver)
         
@@ -160,9 +157,8 @@ class TestListOrders:
         assert old_today_counter < new_today_counter
 
     @allure.title('Проверка заказов в процессе приготовления')
-    def test_orders_in_progress(self, driver, create_courier_and_delete):
-
-        LoginPage.login_to_account(driver, create_courier_and_delete)
+    def test_orders_in_progress(self, login_to_account):
+        driver = login_to_account
         
         main_page = MainPage(driver)
         

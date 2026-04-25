@@ -14,9 +14,8 @@ from urls import Urls
 class TestPersonalAccount:
 
     @allure.title('Проверка персонального аккаунта')
-    def test_click_personal_acount(self, driver, create_courier_and_delete):
-        
-        LoginPage.login_to_account(driver, create_courier_and_delete)
+    def test_click_personal_acount(self, login_to_account):
+        driver = login_to_account
 
         main_page = MainPage(driver)
         # нажимаем на кнопку личный кабинет
@@ -29,9 +28,8 @@ class TestPersonalAccount:
         assert main_page.get_current_url() == Urls.PROFILE_URL
 
     @allure.title('Проверка перехода в историю заказов')
-    def test_click_history_orders(self, driver, create_courier_and_delete):
-
-        LoginPage.login_to_account(driver, create_courier_and_delete)
+    def test_click_history_orders(self, login_to_account):
+        driver = login_to_account
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
 
@@ -48,9 +46,8 @@ class TestPersonalAccount:
         assert profile_page.get_current_url() == Urls.HISTORY_ORDERS_URL
 
     @allure.title('Проверка выхода из аккаунта')
-    def test_click_exit(self, driver, create_courier_and_delete):
-
-        LoginPage.login_to_account(driver, create_courier_and_delete)
+    def test_click_exit(self, login_to_account):
+        driver = login_to_account
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
         

@@ -102,9 +102,8 @@ class TestMainFunctional:
         assert current_counter < new_counter
 
     @allure.title('Проверка создания заказа без авторизации')
-    def test_create_order(self, driver, create_courier_and_delete):
-
-        LoginPage.login_to_account(driver, create_courier_and_delete)
+    def test_create_order(self, login_to_account):
+        driver = login_to_account
         # нажимаем на кнопку личный кабинет
         main_page = MainPage(driver)
 
